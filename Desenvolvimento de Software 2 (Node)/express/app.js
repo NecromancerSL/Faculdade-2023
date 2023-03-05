@@ -17,6 +17,10 @@ app.get('/contato', (req,res) =>{
     res.sendFile(__dirname + '/public/page/contato.html');
 })
 
+app.get('/login', (req,res) =>{
+    res.sendFile(__dirname + '/public/page/login.html');
+})
+
 
 app.listen(8081,() =>{
     console.log("escutando")
