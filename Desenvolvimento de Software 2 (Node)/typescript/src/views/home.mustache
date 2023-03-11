@@ -1,10 +1,12 @@
-<html>
-    <head>
-        <title>Testando Mustache</title>
-    </head>
-    <body>
-        <h1>Titulo da página</h1>
-        <hr>
-        Olá {{user.name}}
-    <body>
-</html>
+
+{{>partials/header}}
+    {{#exibe}}
+        Hello {{nome}}
+    {{/exibe}}
+    <h2>Lista de produto</h2>
+    <ul>
+        {{#produtos}}
+            {{>partials/produtoItem}}    
+        {{/produtos}}
+    </ul>
+{{>partials/footer}}
