@@ -1,34 +1,61 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import React,{Component} from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}> 
-      <Text style={styles.title}>Login</Text>
+class AulaState extends Component {
 
-      <TextInput style={styles.inputEmail}
-        autoComplete= "email"
-        placeholder='Digite o e-mail'
-        placeholderTextColor='grey'
-        keyboardType='email-address'/>
+  constructor(props){
+    super(props)
 
-      <TextInput style={styles.inputPassword}
-        autoComplete= "password"
-        placeholder='Digite a senha'
-        placeholderTextColor='grey'
-        keyboardType='numeric'
-        secureTextEntry={true}/>
+    this.state= {
+      nome : 'Fulanim de tal',
+      inputnome : '',
+    }
 
-        <Button style={styles.button}
-        title='Logar'/>
-    </View>
-  );
+    this.mudarNome = this.mudarNome.bind(this);
+    this.limparNome = this.limparNome.bind(this);
+  }
+
+  mudarNome(){
+    this.setState({
+      nome : this.state.inputnome
+    })
+  }
+
+  limparNome(){
+    this.setState({
+      nome : '',
+      inputnome : ''
+    })
+  }
+
+  render(){
+    return (
+      <View style={styles.container}> 
+        <Text style={styles.title}>{this.state.nome}</Text>
+
+        <TextInput style={styles.inputEmail}
+          autoComplete= "email"
+          placeholder='Digite o nome'
+          placeholderTextColor='grey'
+          value={this.state.inputnome}
+          onChangeText={(texto) => this.setState({inputnome : texto})}/> 
+
+        <TouchableOpacity style={styles.button} onPress={this.mudarNome}>
+          <Text style={styles.textbutton}>Mudar Nome</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={this.limparNome}>
+          <Text style={styles.textbutton}>Limpar Nome</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8b0046',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -56,6 +83,21 @@ const styles = StyleSheet.create({
     marginTop: 7.5,
     marginBottom: 15
   },
+  button: {
+    width: '65%',
+    height: 50,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15
+  },
+  textbutton: {
+    fontSize: 22,
+    color: '#fff',
+  }
 
 
 });
+
+export default AulaState;
