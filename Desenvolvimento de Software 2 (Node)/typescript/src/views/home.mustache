@@ -3,10 +3,18 @@
     {{#exibe}}
         Hello {{nome}}
     {{/exibe}}
-    <h2>Lista de produto</h2>
+    <h2>Lista de animais</h2>
     <ul>
-        {{#produtos}}
-            {{>partials/produtoItem}}    
-        {{/produtos}}
+        {{#animals}}
+            {{>partials/animalItem}}    
+        {{/animals}}
+    </ul>
+
+    <hr/>
+    <h2>Lista de peixes</h2>
+    <ul>
+        {{#animalPeixe}}
+            {{>partials/animalItem}}    
+        {{/animalPeixe}}
     </ul>
 {{>partials/footer}}
