@@ -1,0 +1,39 @@
+import React,{useState, useEffect} from 'react';
+import {View,Text, StyleSheet, Button } from 'react-native';
+
+
+function App(){
+
+  const [cont,setCont] = useState(0);
+
+  useEffect(() => {
+    alert('Criou app')
+  },[]);
+
+  useEffect(() => {
+     alert('Atualizou contador app')
+  },[cont]);
+
+  return(
+    <View style={styles.container}>
+
+      <Text style={styles.text}>Contador: {cont}</Text>
+
+      <Button title="Incremento" onPress={() => setCont(cont+1)}/>
+
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  text: {
+    fontSize: 24
+  }
+});
+
+export default App;
