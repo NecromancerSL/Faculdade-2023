@@ -7,6 +7,50 @@ import { Product } from '../models/Product';
 import { User } from '../models/User';
 
 export const home = async (req: Request, res: Response)=>{
+
+    //build + save, faz o insert no bd
+    // const user = User.build({
+    //     name:'Silvério'
+    // });
+    // await user.save();
+
+    //faz atualização no banco
+    // await User.update({ age: 18 }, {
+    //     where: {
+    //         age: {
+    //             [Op.gt]: 18
+    //         }
+    //     }
+    // });
+
+    //melhor jeito de dar o update
+    // let results = await User.findAll({ where: { id: 2 } });
+    // if(results.length > 0){
+    //     let usuario = results[0];
+    //     usuario.age = 15 ;
+    //     await usuario.save();
+    // }
+
+    //fazendo um delete
+    // await User.destroy({
+    //     where: {
+    //         age: {
+    //             [Op.lte]: 18
+    //         }
+    //     }
+    // });
+
+    //fazendo um delete especifico
+    let results = await User.findAll({ where: { name: 'Elon' } });
+    if(results.length > 0){
+        let usuario = results[0];
+        await usuario.destroy();
+    }
+
+
+
+
+
     let users = await User.findAll({
         //para trazer alguns atributos da tabela
         //attributes: ['name', 'age']
@@ -19,7 +63,9 @@ export const home = async (req: Request, res: Response)=>{
                 { age: 55 },
                 { age: 30 },
                 { name: 'Gustavo' },
-                { name: 'Cristian' }
+                { name: 'Cristian' },
+                { name: 'Silvério' },
+                { name: 'Elon' }
             ]
         }
         //comandos do op
