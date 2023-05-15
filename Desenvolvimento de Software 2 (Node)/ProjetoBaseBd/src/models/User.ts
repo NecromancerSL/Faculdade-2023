@@ -1,5 +1,6 @@
 import {Model, DataTypes} from 'sequelize';
 import { sequelize } from '../instances/mysql';
+import { Express } from 'express';
 
 export interface UserInterface extends Model {
     id: number;
@@ -23,5 +24,7 @@ export const User = sequelize.define<UserInterface>("User",{
         tableName: 'users',
         timestamps: false
     });
+
+    
 
 sequelize.sync();

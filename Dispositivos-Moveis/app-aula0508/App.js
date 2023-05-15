@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import DATA from './src/data';
 import { FlashList } from '@shopify/flash-list';
 
@@ -13,12 +13,14 @@ export default function App() {
         //renderiza os itens
         renderItem={({item}) =>(
           <TouchableOpacity style={styles.button}>
-            <View>
-              <Text style={styles.item}><img src = {item.img}></img></Text>
-              <Text style={styles.itemtitulo}>{item.title}</Text>
-              <Text style={styles.item}>{item.year}</Text>
-              <Text style={styles.item}>{item.price}</Text>
-              <Text style={styles.item}>{item.plataforma}</Text>
+            <View style={styles.itemContainer}>
+              <Image source={{ uri: item.img }} style={styles.image} />
+              <View style={styles.itemDetails}>
+                <Text style={styles.itemtitulo}>{item.title}</Text>
+                <Text style={styles.item}>{item.year}</Text>
+                <Text style={styles.item}>{item.price}</Text>
+                <Text style={styles.item}>{item.plataforma}</Text>
+              </View>
             </View>
           </TouchableOpacity>
         )}
@@ -53,5 +55,18 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     borderWidth: 1,
     borderColor: 'black'
-  }
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
+  image: {
+    width: 150, 
+    height: 150,
+    marginRight: 10,
+  },
+  itemDetails: {
+    flex: 1,
+  },
 });

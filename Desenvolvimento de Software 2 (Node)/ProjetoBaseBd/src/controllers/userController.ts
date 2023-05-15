@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { User } from '../models/User';
+import express from 'express';
 
 export const nome = (req: Request, res: Response) => {
     let nome: string = req.query.nome as string;
@@ -58,7 +59,19 @@ export const diminuirIdade = async (req: Request, res: Response ) => {
 
 export const excluir = async (req: Request, res: Response ) => {
     let id : string = req.params.id;
-
     await User.destroy({ where: {id} });
     res.redirect('/');
 }
+
+export const novousuario = async (req: Request, res: Response) => {
+  const { name, age } = req.body; // obtenhem os valores do formulário
+  try {
+    // cria um novo usuário com os valores fornecidos
+    const newUser = await User.create({ name, age });
+    res.status(201).json(newUser); // retorne o novo usuário como resposta
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erro ao inserir usuário');
+  }
+};
+

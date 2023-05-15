@@ -41,14 +41,11 @@ export const home = async (req: Request, res: Response)=>{
     // });
 
     //fazendo um delete especifico
-    let results = await User.findAll({ where: { name: 'Elon' } });
-    if(results.length > 0){
-        let usuario = results[0];
-        await usuario.destroy();
-    }
-
-
-
+    // let results = await User.findAll({ where: { name: 'Elon' } });
+    // if(results.length > 0){
+    //     let usuario = results[0];
+    //     await usuario.destroy();
+    // }
 
 
     let users = await User.findAll({
