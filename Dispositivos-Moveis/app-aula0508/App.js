@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     width: 150, 
     height: 150,
     marginRight: 10,
+    borderRadius: '50%'
   },
   itemDetails: {
     flex: 1,
