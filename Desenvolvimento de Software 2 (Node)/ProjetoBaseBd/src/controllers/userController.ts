@@ -68,7 +68,7 @@ export const novousuario = async (req: Request, res: Response) => {
   try {
     // cria um novo usuário com os valores fornecidos
     const newUser = await User.create({ name, age });
-    res.status(201).json(newUser); // retorne o novo usuário como resposta
+    res.status(201).redirect('/'); // retorne o novo usuário como resposta
   } catch (error) {
     console.error(error);
     res.status(500).send('Erro ao inserir usuário');
